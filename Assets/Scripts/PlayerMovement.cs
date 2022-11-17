@@ -4,10 +4,30 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 10;
     public GameObject bullet;
+    public GameObject Player;
+    Rigidbody2D rb;
+
+    public float speed = 10;
+    public float jump = 5;
+    public float jumpcount = 0;
 
     private float facingDirX = 1;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (GameObject.FindWithTag("Floor"))
+        {
+            Debug.Log("floor");
+            jumpcount = 0;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -15,7 +35,14 @@ public class PlayerMovement : MonoBehaviour
 
         transform.Translate(transform.right * dirX * speed * Time.deltaTime);
 
-        if(dirX == -1 || dirX == 1)
+        if (Input.GetButtonDown("Jump") && jumpcount != 2)
+        {
+            Debug.Log("jump");
+            rb.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
+            jumpcount++;
+        }
+
+        if (dirX == -1 || dirX == 1)
         {
             facingDirX = dirX;
         }
