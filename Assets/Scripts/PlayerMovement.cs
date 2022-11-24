@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject Player;
     Rigidbody2D rb;
 
+
     public float speed = 10;
     public float jump = 5;
     public float jumpcount = 0;
@@ -21,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (GameObject.FindWithTag("Floor"))
+        if (collision.collider.CompareTag("Floor"))
         {
             Debug.Log("floor");
             jumpcount = 0;
@@ -45,12 +46,12 @@ public class PlayerMovement : MonoBehaviour
         if (dirX == -1 || dirX == 1)
         {
             facingDirX = dirX;
-        }
 
-        if (Input.GetButtonDown("Fire1"))
-        {
-           GameObject BulletFire =  Instantiate(bullet, transform.position, Quaternion.identity);
-           BulletFire.GetComponent<Bullet>().dirX = facingDirX;
+            if (Input.GetButtonDown("Fire1"))
+            {
+                GameObject BulletFire = Instantiate(bullet, transform.position, Quaternion.identity);
+                BulletFire.GetComponent<Bullet>().dirX = facingDirX;
+            }
         }
     }
 }
