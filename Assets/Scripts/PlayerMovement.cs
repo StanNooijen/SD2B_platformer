@@ -7,9 +7,11 @@ public class PlayerMovement : MonoBehaviour
     public GameObject explosionEffect;
     public GameObject bullet;
     public GameObject Player;
+    public GameObject DeathThing;
+    public GameObject FinishThing;
     Rigidbody2D rb;
 
-    private bool right;
+
     public float speed = 10;
     public float jump = 5;
     public float jumpcount = 0;
@@ -19,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        right = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -28,6 +29,17 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("floor");
             jumpcount = 0;
+        }
+
+        if (collision.collider.CompareTag("Finish"))
+        {
+            FinishThing.SetActive(true);
+        }
+
+        if (collision.collider.CompareTag("Enemy"))
+        {
+            DeathThing.SetActive(true);
+            Destroy(gameObject);
         }
     }
 

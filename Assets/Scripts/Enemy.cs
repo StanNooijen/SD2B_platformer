@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     Rigidbody2D rb;
     public float speed = 5f;
+    public GameObject DeathScreen;
 
     float dirX = 1f;
 
@@ -29,11 +30,6 @@ public class Enemy : MonoBehaviour
             if (hit.collider.CompareTag("Wall") || hit.collider.CompareTag("Enemy"))
             {
                 dirX *= -1f;
-            }
-
-            if (hit.collider.CompareTag("Player"))
-            {
-                Destroy(hit.collider.gameObject);
             }
         }
     }
