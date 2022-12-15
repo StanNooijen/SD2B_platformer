@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject Player;
     Rigidbody2D rb;
 
-
+    private bool right;
     public float speed = 10;
     public float jump = 5;
     public float jumpcount = 0;
@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        right = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

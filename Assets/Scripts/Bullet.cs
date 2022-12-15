@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public GameObject Explosion;
     public float speed = 15f;
-    public float lifeTime = 5;
+    public float lifeTime = 20;
     public float dirX = 1f;
 
     private void OnTriggerEnter2D(Collider2D collision)

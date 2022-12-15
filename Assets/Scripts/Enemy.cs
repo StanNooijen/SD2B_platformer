@@ -8,7 +8,6 @@ public class Enemy : MonoBehaviour
     public float speed = 5f;
 
     float dirX = 1f;
-    public GameObject DeathEnemy;
 
     private void Start()
     {
@@ -27,7 +26,7 @@ public class Enemy : MonoBehaviour
         if (hit.collider != null)
         {
             Debug.Log(hit.collider.gameObject.name);
-            if (hit.collider.CompareTag("Wall"))
+            if (hit.collider.CompareTag("Wall") || hit.collider.CompareTag("Enemy"))
             {
                 dirX *= -1f;
             }
@@ -44,7 +43,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             dirX *= 0f;
-            Destroy(gameObject, 1f);
+            Destroy(gameObject, 1.05f);
         }
     }
 }
