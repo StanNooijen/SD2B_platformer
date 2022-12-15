@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameObject explosionEffect;
     public GameObject bullet;
     public GameObject Player;
     Rigidbody2D rb;

@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
+    Rigidbody2D rb;
     public float speed = 5f;
 
     float dirX = 1f;
+    public GameObject DeathEnemy;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -30,6 +36,15 @@ public class Enemy : MonoBehaviour
             {
                 Destroy(hit.collider.gameObject);
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            dirX *= 0f;
+            Destroy(gameObject, 1f);
         }
     }
 }

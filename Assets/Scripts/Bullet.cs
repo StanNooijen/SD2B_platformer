@@ -4,22 +4,27 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public GameObject Explosion;
     public float speed = 15f;
     public float lifeTime = 5;
     public float dirX = 1f;
 
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.collider.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("Wall"))
         {
             Debug.Log("Wall");
-            Destroy(gameObject);
+            dirX *= -1f;
         }
 
-        if (collision.collider.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
+            dirX *= 0f;
+            Animation();
+        }
 
+        if (collision.gameObject.CompareTag("Player"))
+        {
         }
     }
 
@@ -31,5 +36,11 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         transform.Translate(transform.right * dirX * speed * Time.deltaTime);
+    }
+
+    private void Animation()
+    {
+        Instantiate(Explosion, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }
