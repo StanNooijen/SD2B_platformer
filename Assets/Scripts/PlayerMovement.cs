@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
+
     public GameObject explosionEffect;
     public GameObject bullet;
     public GameObject Player;
@@ -33,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (collision.collider.CompareTag("Finish"))
         {
+            Player.SetActive(false);
             FinishThing.SetActive(true);
         }
 

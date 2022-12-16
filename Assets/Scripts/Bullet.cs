@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Wall");
             dirX *= -1f;
@@ -19,17 +19,15 @@ public class Bullet : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
+          
             dirX *= 0f;
             Animation();
-        }
-
-        if (collision.gameObject.CompareTag("Player"))
-        {
         }
     }
 
     private void Start()
     {
+
         Destroy(gameObject, lifeTime);
     }
     // Update is called once per frame

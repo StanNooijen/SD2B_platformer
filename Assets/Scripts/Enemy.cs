@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
     Rigidbody2D rb;
     public float speed = 5f;
-    public GameObject DeathScreen;
+    public GameObject EnemyDeath;
 
     float dirX = 1f;
 
@@ -27,7 +28,7 @@ public class Enemy : MonoBehaviour
         if (hit.collider != null)
         {
             Debug.Log(hit.collider.gameObject.name);
-            if (hit.collider.CompareTag("Wall") || hit.collider.CompareTag("Enemy"))
+            if (hit.collider.CompareTag("Wall") || hit.collider.CompareTag("Enemy") || hit.collider.CompareTag("Finish"))
             {
                 dirX *= -1f;
             }
@@ -38,8 +39,21 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
+            MenuManager.Score += 1;
             dirX *= 0f;
-            Destroy(gameObject, 1.05f);
+            Animation();
         }
     }
+
+    private void Animation()
+    {
+        Instantiate(EnemyDeath, transform.position, transform.rotation);
+        Destroy(gameObject);
+    }
+
+    private void Delete()
+    {
+        Destroy(gameObject);
+    }
+
 }
