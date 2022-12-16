@@ -25,11 +25,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1191559337811534557, guid: 05766d1a97136f24cbc6fe20c1d5e3a6, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2404790226285445338, guid: 05766d1a97136f24cbc6fe20c1d5e3a6, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3564216011564825388, guid: 05766d1a97136f24cbc6fe20c1d5e3a6, type: 3}
       propertyPath: m_RootOrder

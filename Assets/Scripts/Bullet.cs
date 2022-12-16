@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Bullet : MonoBehaviour
 {
+    private int health = 0;
     public GameObject Explosion;
     public float speed = 15f;
     public float lifeTime = 20;
     public float dirX = 1f;
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Wall"))
         {
             Debug.Log("Wall");
             dirX *= -1f;
@@ -22,6 +25,16 @@ public class Bullet : MonoBehaviour
           
             dirX *= 0f;
             Animation();
+        }
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            health += 1;
+            if (collision.gameObject.CompareTag("Player") && health == 2)
+            {
+                Destroy(collision.gameObject);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
         }
     }
 
