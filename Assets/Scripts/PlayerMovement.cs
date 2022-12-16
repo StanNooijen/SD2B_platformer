@@ -5,14 +5,12 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     public GameObject explosionEffect;
     public GameObject bullet;
     public GameObject Player;
     public GameObject DeathThing;
     public GameObject FinishThing;
     Rigidbody2D rb;
-
 
     public float speed = 10;
     public float jump = 5;
@@ -47,12 +45,15 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float dirX = Input.GetAxisRaw("Horizontal");
-
         transform.Translate(transform.right * dirX * speed * Time.deltaTime);
+    }
 
+    private void Update()
+    {
+        float dirX = Input.GetAxisRaw("Horizontal");
         if (Input.GetButtonDown("Jump") && jumpcount != 2)
         {
             Debug.Log("jump");

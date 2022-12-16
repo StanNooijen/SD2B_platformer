@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     public float speed = 15f;
     public float lifeTime = 20;
     public float dirX = 1f;
-
+    private AudioSource audiosource;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
-          
+            Destroy(collision.gameObject, 1f);
             dirX *= 0f;
             Animation();
         }
@@ -40,7 +40,8 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-
+        audiosource = GetComponent<AudioSource>();
+        ShootingSound();
         Destroy(gameObject, lifeTime);
     }
     // Update is called once per frame
@@ -53,5 +54,10 @@ public class Bullet : MonoBehaviour
     {
         Instantiate(Explosion, transform.position, transform.rotation);
         Destroy(gameObject);
+    }
+
+    private void ShootingSound()
+    {
+        audiosource.Play();
     }
 }
