@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject Player;
     public GameObject DeathThing;
     public GameObject FinishThing;
+    public static bool finish = false;
     Rigidbody2D rb;
 
     public float speed = 10;
@@ -35,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Player.SetActive(false);
             FinishThing.SetActive(true);
+            finish = true;
         }
 
         if (collision.collider.CompareTag("Enemy"))
@@ -57,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && jumpcount != 2)
         {
             Debug.Log("jump");
+            //set the Y velocity to 0
             rb.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
             jumpcount++;
         }

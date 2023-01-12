@@ -576,6 +576,7 @@ GameObject:
   - component: {fileID: 75407095}
   - component: {fileID: 75407094}
   - component: {fileID: 75407093}
+  - component: {fileID: 75407097}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -667,6 +668,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &75407097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75407092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a57af89f3133b8e499bb57dbeca97782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScoreManager: {fileID: 0}
+  Player: {fileID: 667017673}
+  PauzeThing: {fileID: 987118014}
+  DeathButton: {fileID: 1346058984}
+  PauzeButton: {fileID: 1582421455}
+  FinishButton: {fileID: 1446058696}
 --- !u!1 &95364759
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,6 +782,9 @@ MonoBehaviour:
   ScoreManager: {fileID: 95364763}
   Player: {fileID: 0}
   PauzeThing: {fileID: 0}
+  DeathButton: {fileID: 0}
+  PauzeButton: {fileID: 0}
+  FinishButton: {fileID: 0}
 --- !u!1001 &103159095
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -993,6 +1015,9 @@ MonoBehaviour:
   ScoreManager: {fileID: 0}
   Player: {fileID: 0}
   PauzeThing: {fileID: 0}
+  DeathButton: {fileID: 0}
+  PauzeButton: {fileID: 0}
+  FinishButton: {fileID: 0}
 --- !u!1 &197520533
 GameObject:
   m_ObjectHideFlags: 0
@@ -3992,6 +4017,9 @@ MonoBehaviour:
   ScoreManager: {fileID: 0}
   Player: {fileID: 0}
   PauzeThing: {fileID: 987118014}
+  DeathButton: {fileID: 0}
+  PauzeButton: {fileID: 0}
+  FinishButton: {fileID: 0}
 --- !u!1001 &998406795
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9212,6 +9240,9 @@ MonoBehaviour:
   ScoreManager: {fileID: 2085594103}
   Player: {fileID: 0}
   PauzeThing: {fileID: 0}
+  DeathButton: {fileID: 0}
+  PauzeButton: {fileID: 0}
+  FinishButton: {fileID: 0}
 --- !u!222 &2085594105
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9447,6 +9478,9 @@ MonoBehaviour:
   ScoreManager: {fileID: 0}
   Player: {fileID: 0}
   PauzeThing: {fileID: 0}
+  DeathButton: {fileID: 0}
+  PauzeButton: {fileID: 0}
+  FinishButton: {fileID: 0}
 --- !u!1 &2130672503
 GameObject:
   m_ObjectHideFlags: 0

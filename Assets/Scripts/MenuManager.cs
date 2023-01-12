@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MenuManager : MonoBehaviour
 {
@@ -10,17 +11,25 @@ public class MenuManager : MonoBehaviour
     public static int Score = 0;
     public GameObject Player;
     public GameObject PauzeThing;
+    public GameObject DeathButton, PauzeButton, FinishButton;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Player.SetActive(false);
             PauzeThing.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(PauzeButton);
         }
 
         ScoreManager.text = Score.ToString();
+
+        if (PlayerMovement.finish)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(FinishButton);
+        }
     }
 
     public void Play()
